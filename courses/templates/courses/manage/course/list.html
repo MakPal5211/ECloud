@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}My courses{% endblock %}
+{% block title %}My storage{% endblock %}
 
 {% block content %}
-  <h1>My courses</h1>
+  <h1>My storage</h1>
 
   <div class="module">
     {% for course in object_list %}
@@ -20,10 +20,10 @@
         </p>
       </div>
     {% empty %}
-      <p>You haven't created any courses yet.</p>
+      <p>You haven't created any storage yet.</p>
     {% endfor %}
     <p>
-      <a href="{% url "course_create" %}" class="button">Create new course</a>
+      <a href="{% url "course_create" %}" class="button">Create new storage</a>
     </p>
   </div>
 {% endblock %}

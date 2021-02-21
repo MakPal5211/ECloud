@@ -2,22 +2,22 @@
 
 {% block title %}
   {% if object %}
-    Edit course "{{ object.title }}"
+    Edit storage "{{ object.title }}"
   {% else %}
-    Create a new course
+    Create a new storage
   {% endif %}
 {% endblock %}
 
 {% block content %}
   <h1>
     {% if object %}
-      Edit course "{{ object.title }}"
+      Edit storage "{{ object.title }}"
     {% else %}
-      Create a new course
+      Create a new storage
     {% endif %}
   </h1>
   <div class="module">
-    <h2>Course info</h2>
+    <h2>Storage info</h2>
     <form method="post">
       {{ form.as_p }}
       {% csrf_token %}
