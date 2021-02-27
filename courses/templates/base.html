@@ -3,19 +3,34 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>{% block title %}Educa{% endblock %}</title>
+  <title>{% block title %}ECloud{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
   <div id="header">
-    <a href="/" class="logo">Educa</a>
-    <ul class="menu">
+    <a href="{% url "student_course_list" %}" class="logo">ECloud</a>
       {% if request.user.is_authenticated %}
-        <li><a href="{% url "logout" %}">Sign out</a></li>
-      {% else %}
-        <li><a href="{% url "login" %}">Sign in</a></li>
+          <ul class="menu">
+            <li {% if section == "courses" %}class="selected"{% endif %}>
+                <a href="{% url "student_course_list" %}">Storages</a>
+            </li>
+            <li {% if section == "images" %}class="selected"{% endif %}>
+                <a href="{% url "manage_course_list" %}">My storage</a>
+            </li>
+            <li {% if section == "people" %}class="selected"{% endif %}>
+                <a href="{% url "course_list" %}">Other storage</a>
+            </li>
+          </ul>
       {% endif %}
-    </ul>
+    <span class="user">
+        {% if request.user.is_authenticated %}
+            Hello {{ request.user.first_name }},
+            <a href="{% url "logout" %}">Sign out</a>
+        {% else %}
+            <a href="{% url "login" %}">Sign in</a>
+        {% endif %}
+    </span>
+
   </div>
   <div id="content">
     {% block content %}
