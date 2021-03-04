@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>{% block title %}ECloud{% endblock %}</title>
-  <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <link href="{% static "css/base1.css" %}" rel="stylesheet">
 </head>
 <body>
   <div id="header">
@@ -12,13 +12,13 @@
       {% if request.user.is_authenticated %}
           <ul class="menu">
             <li {% if section == "courses" %}class="selected"{% endif %}>
-                <a href="{% url "student_course_list" %}">Storages</a>
+                <a href="{% url "student_course_list" %}">Home</a>
             </li>
             <li {% if section == "images" %}class="selected"{% endif %}>
-                <a href="{% url "manage_course_list" %}">My storage</a>
+                <a href="{% url "manage_course_list" %}">My folders</a>
             </li>
             <li {% if section == "people" %}class="selected"{% endif %}>
-                <a href="{% url "course_list" %}">Other storage</a>
+                <a href="{% url "course_list" %}">Storage</a>
             </li>
           </ul>
       {% endif %}

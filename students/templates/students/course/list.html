@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}My storage modules{% endblock %}
+{% block title %}My subscriptions{% endblock %}
 
 {% block content %}
-  <h1>My storage modules</h1>
+  <h1>My subscriptions</h1>
 
   <div class="module">
     {% for course in object_list %}
@@ -14,9 +14,9 @@
       </div>
     {% empty %}
       <p>
-        You are not enrolled in any storages yet.
-        <a href="{% url "course_list" %}">Browse storages</a>
-        to enroll in a storage.
+        You are not enrolled in any folder yet.
+        <a href="{% url "course_list" %}">Browse storage</a>
+        to enroll in a folder.
       </p>
     {% endfor %}
   </div>
