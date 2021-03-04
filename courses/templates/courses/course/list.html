@@ -2,18 +2,18 @@
 
 {% block title %}
   {% if subject %}
-    {{ subject.title }} storage
+    {{ subject.title }} folders
   {% else %}
-    All storage
+    All folders
   {% endif %}
 {% endblock %}
 
 {% block content %}
   <h1>
     {% if subject %}
-      {{ subject.title }} storage
+      {{ subject.title }} folders
     {% else %}
-      All storages
+      All folders
     {% endif %}
   </h1>
   <div class="contents">
@@ -26,7 +26,7 @@
         <li {% if subject == s %}class="selected"{% endif %}>
           <a href="{% url "course_list_subject" s.slug %}">
             {{ s.title }}
-            <br><span>{{ s.total_courses }} storage</span>
+            <br><span>{{ s.total_courses }} folders</span>
           </a>
         </li>
       {% endfor %}

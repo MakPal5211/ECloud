@@ -4,20 +4,22 @@
 
 {% block content %}
   <h1>Log-in</h1>
-  <div class="module">
+  <div class="container">
+
     {% if form.errors %}
       <p>Your username and password didn't match. Please try again.</p>
     {% else %}
-      <p>Please, use the following form to log-in. If you don't have an
-        account <a href="{% url "student_registration" %}">register here</a></p>
+
     {% endif %}
-    <div class="login-form">
       <form action="{% url 'login' %}" method="post">
+       <div class="modal">
+        <p>Please, use the following form to log-in. <br>If you don't have an
+        account <a href="{% url "student_registration" %}">register here</a></p>
         {{ form.as_p }}
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}" />
-        <p><input type="submit" value="Log-in"></p>
+        <p class="button"><input autofocus type="submit" value="Log-in"></p>
+       </div>
       </form>
-    </div>
   </div>
 {% endblock %}
