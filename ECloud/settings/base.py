@@ -14,8 +14,11 @@ from pathlib import Path
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+BASE_DIR = Path(__file__, os.pardir).resolve().parent.parent
+
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(
+#                                            os.path.join(__file__, os.pardir))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -84,8 +87,10 @@ ASGI_APPLICATION = 'ECloud.routing.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ecdb',
+        'USER': 'postgres',
+        'PASSWORD': '178-200p',
     }
 }
 
@@ -142,3 +147,24 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'courses/static'),
+# ]
+
+AWS_ACCESS_KEY_ID = 'AKIAXNYCWXJIRMAXS2M4'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ecloud-media-files'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+# AWS_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'ECloud.storage_backends.MediaStorage'  # <-- here is where we reference it
+
