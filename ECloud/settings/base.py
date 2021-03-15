@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__, os.pardir).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = '8or9--pq-^2+ybs-=&k_j3&&17fp_l%3i#_(#=qqiqbdtyc9jg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.makpalecloud.com', 'makpalecloud.com', '127.0.0.1']
 
 
 # Application definition
@@ -88,12 +88,22 @@ ASGI_APPLICATION = 'ECloud.routing.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecdb',
-        'USER': 'postgres',
-        'PASSWORD': '178-200p',
+        'NAME': 'test',
+        'USER': 'test_user',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -133,7 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 
@@ -168,4 +178,12 @@ AWS_S3_OBJECT_PARAMETERS = {
 # STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 DEFAULT_FILE_STORAGE = 'ECloud.storage_backends.MediaStorage'  # <-- here is where we reference it
+
+ADMINS = (
+    ('makpal', 'makagonov9986@gmail.com'),
+)
+
+
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
 

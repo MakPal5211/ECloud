@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, FormView
 from django.contrib.auth.forms import UserCreationForm
@@ -66,3 +67,8 @@ class StudentCourseDetailView(DetailView):
             # get first module
             context['module'] = course.modules.all()[0]
         return context
+
+
+def index(request):
+    """homepage of learning logs"""
+    return render(request, '/templates/students/course/list.html')
